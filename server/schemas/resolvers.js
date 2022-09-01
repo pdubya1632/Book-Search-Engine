@@ -10,7 +10,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
         return userData;
       }
-      throw new AuthenticationError('Please log in before viewing this page');
+      throw new AuthenticationError('Please log in first');
     },
     },
 
@@ -30,7 +30,7 @@ const resolvers = {
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError('Invalid credentials');
       }
 
       const token = signToken(user);
@@ -46,7 +46,7 @@ const resolvers = {
         );
         return updatedUser;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('Please log in first');
     },
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
@@ -57,7 +57,7 @@ const resolvers = {
         );
         return updatedUser;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('Please log in first');
     },
     }
 }
