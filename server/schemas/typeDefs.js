@@ -9,9 +9,10 @@ const typeDefs = gql`
     savedBooks: [Book]
   }
 
-    type Auth {
-
-    }
+  type Auth {
+    token: ID!
+    user: User
+  }
 
   type Book {
     bookId: ID!
@@ -31,9 +32,9 @@ const typeDefs = gql`
     link: String
     }
 
-    type Query {
-
-    }
+  type Query {
+    me: User
+  }
 
     type Mutation {
 
