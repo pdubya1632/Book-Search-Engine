@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks', {
+// localhost changed to 127.0.0.1
+// process.env.MONGODB_URI || 
+mongoose.connect('mongodb://127.0.0.1:27017/googlebooks?readPreference=primary&ssl=false', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
