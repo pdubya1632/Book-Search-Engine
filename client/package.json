@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "async_hooks": "^1.0.0",
     "bootstrap": "^4.4.1",
-    "graphql": "^14.6.0",
+    "graphql": "^16.6.0",
     "jwt-decode": "^2.2.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
@@ -19,10 +19,8 @@
     "react-scripts": "^4.0.2"
   },
   "scripts": {
-        "start": "react-scripts start",
-    "build": "react-scripts build",
-    "start:dev": "react-scripts --openssl-legacy-provider start",
-    "build:dev": "react-scripts --openssl-legacy-provider build",
+"start": "react-scripts --openssl-legacy-provider start",
+"build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

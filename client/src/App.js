@@ -1,5 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 
 import {
   ApolloClient,
@@ -18,22 +22,21 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
-  // return the headers to the context so httpLink can read them
+  const token = localStorage.getItem('id_token');
+
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    }
-  }
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
 });
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  // todo : fix 'Cache data may be lost' error
 });
-
 
 function App() {
   return (
@@ -41,11 +44,14 @@ function App() {
       <Router>
         <>
           <Navbar />
-            <Routes>
-              <Route exact path='/' element={<SearchBooks />} />
-              <Route exact path='/saved' element={<SavedBooks />} />
-              <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-            </Routes>
+          <Routes>
+            <Route path="/" element={<SearchBooks />} />
+            <Route path="/saved" element={<SavedBooks />} />
+            <Route
+              path="*"
+              element={<h1 className="display-2">Wrong page!</h1>}
+            />
+          </Routes>
         </>
       </Router>
     </ApolloProvider>
