@@ -6,8 +6,10 @@ import {
   Card,
   Button,
 } from 'react-bootstrap';
+
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
+
 import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
@@ -31,7 +33,7 @@ const SavedBooks = () => {
       });
 
       if (!data.ok) {
-        throw new Error('something went wrong!');
+        throw new Error('Something went wrong!');
       }
 
       // upon success, remove book's id from localStorage
