@@ -27,9 +27,7 @@ const { authMiddleware } = require('./utils/auth');
     app.use(express.static(path.join(__dirname, '../client/build')));
   }
 
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/"))
-  })
+
   
 const startServer = async () => {
 
@@ -38,7 +36,7 @@ const startServer = async () => {
 
   db.once('open', () => {
     httpServer.listen(PORT, () =>
-        console.log(`Server listening on http://127.0.0.1:${PORT}${apolloServer.graphqlPath}`)
+        console.log(`Server listening on http://localhost:${PORT}${apolloServer.graphqlPath}`)
       )
   });
 
